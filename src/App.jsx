@@ -19,8 +19,23 @@ class App extends Component {
         this.setState({ form: newState });
       }
     }
+  }
 
-    console.table(newState);
+  validateRg = () => { 
+    const rg = this.state.form[0].value;
+
+    if (!rg) { 
+      console.log("Please, insert a valid RG");
+      return false;
+    }
+
+    console.log("RG = ", rg);
+
+    const regExp = new RegExp(/^\d{10}\s?-?\s?\d{1}$/);
+    const result = rg.match(regExp);
+
+    console.log("Match = ", result[0]);
+    return result;
   }
 
   
@@ -32,11 +47,15 @@ class App extends Component {
             <legend>Form Validation With RegExp</legend>
             <div className="rgForm">
               <fieldset>
-                <legend><label htmlFor={ this.state.form[0].id }>RG: </label></legend>
+                <legend><label htmlFor={this.state.form[0].id}>RG: </label></legend>
                 <input type="text" name="$rg" id={this.state.form[0].id} placeholder="some text"
                   onChange={this.handleChange}
                 />
-                <button type="button">Validate</button>
+                <button type="button"
+                  onClick={ this.validateRg }
+                >
+                  Validate
+                </button>
               </fieldset>
             </div>
             <div className="cpfForm">
