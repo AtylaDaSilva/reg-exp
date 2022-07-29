@@ -1,4 +1,12 @@
 .formContainer {
-    width: 15%;
+    width: 290px;
     margin: 50px auto auto auto;
+}
+
+button {
+    margin: 0px 10px;
+}
+
+.log p {
+    margin: 5px 0px;
 }
